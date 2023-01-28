@@ -96,7 +96,8 @@
 
                 <li class="nav-item">
                   <a
-                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}"
+                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}
+                                               {{ Route::currentRouteName() == 'admin.posts.show' ? 'bg-secondary' : '' }}"
                     href="{{route('admin.posts.index')}}"
                   >
                   <i class="fa-solid fa-envelopes-bulk fa-lg fa-fw"></i>
@@ -107,7 +108,7 @@
             </div>
           </nav>
 
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 @yield('content-classes')">
             @yield('content')
           </main>
         </div>
