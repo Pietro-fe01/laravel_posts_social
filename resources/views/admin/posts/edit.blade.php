@@ -20,7 +20,7 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">Post image:</label>
-                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" onchange="loadFile(event)">
+                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" onchange="getImgPreview(event)">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -32,7 +32,7 @@
                         <img id="output" src="{{ $post->image }}" style="width: 250px; height: 200px" class="mt-3">
                     @endif
                 @else
-                    <img id="output" style="width: 250px; height: 200px" class="mt-3">
+                    <img id="output" src="" class="mt-3">
                 @endif
             </div>
 
@@ -48,16 +48,31 @@
             <button type="reset" class="btn btn-secondary">RESET</button>
         </form>
     </section>
-@endsection
 
-<script>
-    var loadFile = function(event) {
-            if( document.getElementById('output') ) {
-                var output = document.getElementById('output');
+    <script>
+        const inputImage = document.getElementById('image'); // form input file
+        const image = document.getElementById('output'); // image output preview
+
+        window.onload = function() {
+            if( image.src == "" ) {
+                image.classList.add('d-none');
+            }
+        }
+    
+        function getImgPreview(event){
+            if( inputImage.files.length ) {
+                image.classList.remove('d-none');
+                image.classList.add('d-block');
+                loadFile(event);
+            }
+        };
+    
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
                 output.src = URL.createObjectURL(event.target.files[0]);
                 output.onload = function() {
                 URL.revokeObjectURL(output.src) // free memory
             }
-        }
-    };
-</script>
+        };
+    </script>
+@endsection
