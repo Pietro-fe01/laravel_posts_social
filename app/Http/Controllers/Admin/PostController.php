@@ -86,7 +86,20 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+
+        if( isset($data['image']) ) {
+            if ( $post->image && str_contains($post->image, 'uploads') ) {
+                Storage::disk('public')->delete('uploads', $post->image);
+            };
+            $post->image = Storage::disk('public')->put('uploads', $data['image']);
+        }
+
+        $post->slug = Str::of($data['title'])->slug('-');
+
+        $post->update($data);
+
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**

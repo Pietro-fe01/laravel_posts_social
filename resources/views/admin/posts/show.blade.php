@@ -4,7 +4,7 @@
 
 @section('content')
     <section id="show-post" style="position: relative">
-        <h1>{{ $post->title }}</h1>
+        <h1 class="w-75">{{ $post->title }}</h1>
 
         <div class="my-3">
         @if ( $post->image )
