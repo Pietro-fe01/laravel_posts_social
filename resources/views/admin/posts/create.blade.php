@@ -8,6 +8,7 @@
 
         <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            
             <div class="mb-3">
                 <label for="title" class="form-label">Post title*</label>
                 <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title" value="{{ old('title') }}">

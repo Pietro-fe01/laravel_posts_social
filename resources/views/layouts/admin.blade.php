@@ -97,7 +97,8 @@
                 <li class="nav-item">
                   <a
                     class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}
-                                               {{ Route::currentRouteName() == 'admin.posts.show' ? 'bg-secondary' : '' }}"
+                                               {{ Route::currentRouteName() == 'admin.posts.show' ? 'bg-secondary' : '' }}
+                                               {{ Route::currentRouteName() == 'admin.posts.edit' ? 'bg-secondary' : '' }}"
                     href="{{route('admin.posts.index')}}"
                   >
                   <i class="fa-solid fa-envelopes-bulk fa-lg fa-fw"></i>
