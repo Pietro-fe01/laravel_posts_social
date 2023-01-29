@@ -8,7 +8,7 @@
             <h1 class="py-3">Posts List</h1>
 
             @if ( session('delete-message') )
-                <div class="alert alert-success">{{ session('delete-message') }}</div>
+                <div class="alert alert-success m-0">{{ session('delete-message') }}</div>
             @endif
 
             <a href="{{ route('admin.posts.create') }}" class="btn btn-success">Create new post</a>
