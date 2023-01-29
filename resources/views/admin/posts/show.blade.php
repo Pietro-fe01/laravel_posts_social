@@ -7,11 +7,13 @@
         <h1>{{ $post->title }}</h1>
 
         <div class="my-3">
+        @if ( $post->image )
             @if ( str_contains($post->image, 'uploads/') )
-                <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top w-25" alt="">
+                <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top w-25" alt="post_image">
             @else 
-                <img src="{{ $post->image }}" class="pt-3 card-img-top w-25" alt="">
+                <img src="{{ $post->image }}" class="pt-3 card-img-top w-25" alt="post_image">
             @endif
+        @endif
         </div>
 
         <div>

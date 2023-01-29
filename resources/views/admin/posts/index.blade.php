@@ -11,10 +11,12 @@
         <div class="d-flex flex-wrap">
             @foreach ($posts as $post)
                 <div class="card mb-4 text-center">
-                    @if ( str_contains($post->image, 'uploads/') )
-                        <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top" alt="">
-                    @else 
-                        <img src="{{ $post->image }}" class="pt-3 card-img-top" alt="">
+                    @if ( $post->image )
+                        @if ( str_contains($post->image, 'uploads/') )
+                            <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top" alt="post_image">
+                        @else 
+                            <img src="{{ $post->image }}" class="pt-3 card-img-top" alt="post_image">
+                        @endif
                     @endif
                     <div class="card-body">
                         <h5 class="card-title text-decoration-underline">{{ $post->title }}</h5>
