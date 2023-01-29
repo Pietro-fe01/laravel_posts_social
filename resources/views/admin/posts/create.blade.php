@@ -8,7 +8,7 @@
 
         <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="mb-3">
                 <label for="title" class="form-label">Post title*</label>
                 <input type="text" id="title" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Title" value="{{ old('title') }}">
@@ -19,10 +19,12 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">Post image:</label>
-                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
+                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" onchange="loadFile(event)">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+
+                <img id="output" style="width: 250px; height: 200px" class="mt-3">
             </div>
 
             <div class="mb-3">
@@ -38,3 +40,13 @@
         </form>
     </section>
 @endsection
+
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
