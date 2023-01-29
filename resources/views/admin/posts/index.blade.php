@@ -6,11 +6,17 @@
     <section id="index-post">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="py-3">Posts List</h1>
+
+            @if ( session('delete-message') )
+                <div class="alert alert-success">{{ session('delete-message') }}</div>
+            @endif
+
             <a href="{{ route('admin.posts.create') }}" class="btn btn-success">Create new post</a>
         </div>
         <div class="d-flex flex-wrap">
-            @foreach ($posts as $post)
+            @foreach ($posts as $i => $post)
                 <div class="card mb-4 text-center">
+                    <small class="post-id">{{ $i + 1 }}</small>
                     @if ( $post->image )
                         @if ( str_contains($post->image, 'uploads/') )
                             <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top" alt="post_image">
@@ -37,7 +43,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-danger">
-                                        Deleting Record ID {{ $post->id }}, are you sure?
+                                        Deleting Post number {{ $i + 1 }}, are you sure?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

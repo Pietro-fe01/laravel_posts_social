@@ -1,5 +1,6 @@
 #index-post {
     .card {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -21,6 +22,18 @@
             overflow: hidden; 
             width: 500px;
             white-space: nowrap;
+        }
+        & .post-id {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: rgba($color: black, $alpha: 0.7);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
         }
     }
 }
