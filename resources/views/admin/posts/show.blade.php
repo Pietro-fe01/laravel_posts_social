@@ -6,7 +6,13 @@
     <section id="show-post" style="position: relative">
         <h1>{{ $post->title }}</h1>
 
-        <img src="{{ $post->image }}" alt="" class="w-25 py-4">
+        <div class="my-3">
+            @if ( str_contains($post->image, 'uploads/') )
+                <img src="{{ asset("storage/$post->image") }}" class="pt-3 card-img-top w-25" alt="">
+            @else 
+                <img src="{{ $post->image }}" class="pt-3 card-img-top w-25" alt="">
+            @endif
+        </div>
 
         <div>
             <h5 class="m-0">Description:</h5>
