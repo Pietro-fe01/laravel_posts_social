@@ -15,5 +15,4 @@
 
         <div style="position: absolute; top: 15px; right: 10px;">>Post created: <span class="text-decoration-underline">{{ $post->created_at }}</span></div>
     </section>
-
 @endsection

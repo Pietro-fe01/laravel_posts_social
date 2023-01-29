@@ -24,7 +24,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class)->parameters(['posts' => 'post:slug']);
 });
 
 require __DIR__.'/auth.php';

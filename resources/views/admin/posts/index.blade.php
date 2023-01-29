@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-decoration-underline">{{ $post->title }}</h5>
                         <p class="card-text description my-4">{{ $post->description }}</p>
-                        <a href="{{ route('admin.posts.show', $post) }}" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Info</a>
+                        <a href="{{ route('admin.posts.show', $post->slug) }}" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Info</a>
                     </div>
                 </div>
             @endforeach
